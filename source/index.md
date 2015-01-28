@@ -77,8 +77,12 @@ DeviceId и DeviceType передаются только для мобильны
 
 > Для списка факультетов используется следующий запрос:
 
+
 ```http
-GET http://dimmetrius.ru/RUZService.svc/faculties
+GET /RUZService.svc/faculties HTTP/1.1
+User-Agent: MobileClient/1.0.0
+Host: dimmetrius.ru
+
 ```
 
 > Команда вернет JSON, структура которого будет следующей:
@@ -101,8 +105,6 @@ GET http://dimmetrius.ru/RUZService.svc/faculties
     }
 ]
 ```
-
-This endpoint retrieves all kittens.
 
 ### Пример
 
