@@ -75,6 +75,8 @@ DeviceId и DeviceType передаются только для мобильны
 
 ## Все факультеты
 
+> Для списка факультетов используется следующий запрос:
+
 ```http
 GET http://dimmetrius.ru/RUZService.svc/faculties
 ```
