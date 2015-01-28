@@ -1,14 +1,12 @@
 ---
-title: Dimmetrius Test
+title: RUZ Mobile REST Api
 
 language_tabs:
+  - http
   - shell
-  - ruby
-  - python
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='http://github.com/tripit/slate'>Документация сделана на основе Slate</a>
 
 includes:
   - errors
@@ -16,33 +14,28 @@ includes:
 search: true
 ---
 
-# Introduction
+# Описание
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Добро пожаловать в RUZ Mobile REST API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
 
 We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
-# Authentication
+# Авторизация
 
-> To authorize, use this code:
+> Для авторизации используется следующий запрос:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
+```http
+GET /api HTTP/1.1
+User-Agent: MyClient/1.0.0
+Accept: application/vnd.travis-ci.2+json
+Authorization: token "YOUR TRAVIS ACCESS TOKEN"
+Host: travis.example.com
 ```
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
+curl "api"
   -H "Authorization: meowmeowmeow"
 ```
 
