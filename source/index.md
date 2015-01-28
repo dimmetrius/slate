@@ -32,40 +32,35 @@ search: true
 > Для авторизации используется следующий запрос:
 
 ```http
-GET /api HTTP/1.1
-User-Agent: MyClient/1.0.0
-Accept: application/vnd.travis-ci.2+json
-Authorization: token "YOUR TRAVIS ACCESS TOKEN"
-Host: travis.example.com
+POST /RUZService.svc/token HTTP/1.1
+User-Agent: MobileClient/1.0.0
+Host: dimmetrius.ru
 
+{"Login":"администратор", "Password":"****", "OSType":"0", "DeviceID":"ID"}
 ```
 
-> Отправляется по протоколу https в формате:
+> Отправляются данные по протоколу https в формате:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+    "Login":"администратор",
+    "Password":"****",
+    "OSType":"0",
+    "DeviceID":"ID"
+}
 ```
 
-RUZ Mobile API позволяет получить специальный токен-ключ, который используется для доступа к методам подбора аудитории и регистрации заявки
+где `OSType` принимает значение:
 
-Для авторизации используется заголовок:
+Значение |  Описание
+--------- | -----------
+null | Не задан для HTML5 версии
+0 | Неизвестное устройство
+1 | Android
+2 | iOs
+3 | Windows Phone
 
-`Authorization: ...`
+Сервер возвращает специальный токен-ключ, который используется для доступа к методам подбора аудитории и регистрации заявки
 
 <aside class="notice">
 DeviceId и DeviceType передаются только для мобильных приложений.
