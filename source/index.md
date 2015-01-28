@@ -38,6 +38,10 @@ Host: dimmetrius.ru
 
 {"Login":"администратор", "Password":"****", "OSType":"0", "DeviceID":"ID"}
 ```
+для авторизации используется POST запрос:
+`POST http://dimmetrius.ru/RUZService.svc/faculties`
+
+в теле запроса по протоколу https в формате JSON передаются учетные данные
 
 > Отправляются данные по протоколу https в формате:
 
@@ -50,7 +54,7 @@ Host: dimmetrius.ru
 }
 ```
 
-где `OSType` принимает значение:
+для определения типа устройства `OSType` используются следующие коды:
 
 Значение |  Описание
 --------- | -----------
@@ -61,6 +65,9 @@ null | Не задан для HTML5 версии
 3 | Windows Phone
 
 Сервер возвращает специальный токен-ключ, который используется для доступа к методам подбора аудитории и регистрации заявки
+
+Например:
+`"VtwgVyvp8XhdoAAjQXrWtC+vbWp4CBfui0IBMCj2TBXKkUyx9LhB+LkbeNWyLAs7oPHvGc+YzI961z7cr4qO4nQQ7eCApRP6kMWAw1D9+tf9kunBLlgwNqcaJsgMOQ4C+z1ZW79fzrdoxZvZrM5hxcCqBx1Bb93qsTsRMSSR/EG1kkcKWawlr0F+McHb/WEO347YmcOD0UHXUFyZSi7fqVMm04A/ety72IbMjzf/D1/9Dz4h8whCLHBqJl8MJKrVH8HWYBFDMpVnUBSnmwPOp/kg66y6ysaJhUa7SNlUhWAQKtv1K59z8cshzoQc1Eam/o3ArAkhldgqKTuIRkmKDg=="`
 
 <aside class="notice">
 DeviceId и DeviceType передаются только для мобильных приложений.
