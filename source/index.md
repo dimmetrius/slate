@@ -6,7 +6,8 @@ language_tabs:
   - shell
 
 toc_footers:
-  - <a href='http://github.com/tripit/slate'>Документация сделана на основе Slate</a>
+  - Для Конкурса
+  - <a href='http://github.com/tripit/slate'>Сделано на основе Slate</a>
 
 includes:
   - errors
@@ -16,9 +17,15 @@ search: true
 
 # Описание
 
-Добро пожаловать в RUZ Mobile REST API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Добро пожаловать в RUZ Mobile REST API! 
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Данный документ содержит описание WEB службы подсистемы публикации РУЗ на мобильных устройствах.
+
+В web сервисе реализована авторизация и аутентификация пользователей для оформления заявок и получения push уведомлений;
+
+Запросы данных расписаний кэшируются на сервере, что позволяет серверу выдерживать серьезные нагрузки
+
+Реализован механизм приема и записи данных в БД РУЗ.
 
 
 # Авторизация
@@ -31,6 +38,8 @@ User-Agent: MyClient/1.0.0
 Accept: application/vnd.travis-ci.2+json
 Authorization: token "YOUR TRAVIS ACCESS TOKEN"
 Host: travis.example.com
+
+
 ```
 
 ```shell
@@ -39,19 +48,17 @@ curl "api"
   -H "Authorization: meowmeowmeow"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+RUZ Mobile API позволяет получить специальный токен-ключ, который используется для доступа к методам подбора аудитории и регистрации заявки
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Для авторизации используется заголовок:
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`Authorization: ...`
 
 <aside class="notice">
-You must replace `meowmeowmeow` with your personal API key.
+DeviceId и DeviceType передаются только для мобильных приложений.
 </aside>
 
-# Kittens
+# Факультеты
 
 ## Get All Kittens
 
