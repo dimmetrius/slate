@@ -110,63 +110,71 @@ Host: dimmetrius.ru
 
 `GET http://dimmetrius.ru/RUZService.svc/faculties`
 
-### Параметры Запроса
+# Группы
 
-Параметр | Тип | Описание
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+## Получить все группы
+
+> Для получения групп используется следующий запрос:
+
+
+```http
+GET /RUZService.svc/groups HTTP/1.1
+User-Agent: MobileClient/1.0.0
+Host: dimmetrius.ru
+
+```
+
+> Команда вернет JSON, структура которого будет следующей:
+
+```json
+[
+    {
+        "chairOid": 0,
+        "course": 1,
+        "faculty": "Б 09.03.04 Программная инженерия",
+        "facultyOid": 5591,
+        "formOfEducation": "очная форма обучения",
+        "groupOid": 321,
+        "number": "101ПИ",
+        "speciality": ""
+    },
+    { 
+        "chairOid": 0,
+        "course": 1,
+        "faculty": "Б 09.03.04 Программная инженерия",
+        "facultyOid": 5591,
+        "formOfEducation": "очная форма обучения",
+        "groupOid": 334,
+        "number": "102ПИ",
+        "speciality": ""
+    }
+]
+```
 
 <aside class="success">
 Запрос кэшируется на сервере
 </aside>
 
-## Получить Определенный факультет
+## Получить группы определенного факультета
 
-```ruby
-require 'kittn'
+```http
+GET /RUZService.svc/groups?facultyOid=5591 HTTP/1.1
+User-Agent: MobileClient/1.0.0
+Host: dimmetrius.ru
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
 ```
 
-```python
-import kittn
+### Параметры Запроса
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+Параметр | Тип | Описание
+--------- | ------- | -----------
+facultyOid | number | ID факультета
 
-```shell
-curl "http://example.com/api/kittens/3"
-  -H "Authorization: meowmeowmeow"
-```
 
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
 
 This endpoint retrieves a specific kitten.
 
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the cat to retrieve
+<aside class="warning">Запросы на подбор аудитории, просмотр и регистрацию заявки могут выполнить только авторизованные пользователи</aside>
 
 # Ошибки
 
