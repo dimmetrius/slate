@@ -14,7 +14,7 @@ toc_footers:
 search: true
 ---
 
-# Описание
+# RUZ Mobile REST API
 
 Добро пожаловать в RUZ Mobile REST API! 
 
@@ -24,7 +24,7 @@ search: true
 
 Запросы данных расписаний кэшируются на сервере, что позволяет серверу выдерживать серьезные нагрузки
 
-Реализован механизм приема и записи данных в БД РУЗ.
+Реализован механизм подачи и рассмотрения заявок РУЗ.
 
 
 # Авторизация
@@ -38,49 +38,9 @@ Accept: application/vnd.travis-ci.2+json
 Authorization: token "YOUR TRAVIS ACCESS TOKEN"
 Host: travis.example.com
 
-
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api"
-  -H "Authorization: meowmeowmeow"
-```
-
-RUZ Mobile API позволяет получить специальный токен-ключ, который используется для доступа к методам подбора аудитории и регистрации заявки
-
-Для авторизации используется заголовок:
-
-`Authorization: ...`
-
-<aside class="notice">
-DeviceId и DeviceType передаются только для мобильных приложений.
-</aside>
-
-# Факультеты
-
-## Все факультеты
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> Команда вернет JSON, структура которого будет следующей:
+> Отправляется по протоколу https в формате:
 
 ```json
 [
@@ -101,11 +61,50 @@ curl "http://example.com/api/kittens"
 ]
 ```
 
+RUZ Mobile API позволяет получить специальный токен-ключ, который используется для доступа к методам подбора аудитории и регистрации заявки
+
+Для авторизации используется заголовок:
+
+`Authorization: ...`
+
+<aside class="notice">
+DeviceId и DeviceType передаются только для мобильных приложений.
+</aside>
+
+# Факультеты
+
+## Все факультеты
+
+```http
+GET http://dimmetrius.ru/RUZService.svc/faculties
+```
+
+> Команда вернет JSON, структура которого будет следующей:
+
+```json
+[ 
+    {
+        "abbr": "МТМТ 472",
+        "code": "М010301МТМТ",
+        "facultyOid": 7007,
+        "institute": "Факультет математики",
+        "name": "Б 01.03.01 Математика"
+    },
+    {
+        "abbr": "МТМТ 452",
+        "code": "Н010301МТМТ",
+        "facultyOid": 7339,
+        "institute": "",
+        "name": "Б 01.03.01 НН Математика"
+    }
+]
+```
+
 This endpoint retrieves all kittens.
 
 ### Пример
 
-`GET http://dimmetrius.ru/kittens`
+`GET http://dimmetrius.ru/RUZService.svc/faculties`
 
 ### Параметры Запроса
 
