@@ -4,6 +4,8 @@ title: RUZ Mobile REST Api
 language_tabs:
   - http
   - shell
+  - javascript
+  - csharp
 
 toc_footers:
   - Для Конкурса
@@ -60,7 +62,7 @@ DeviceId и DeviceType передаются только для мобильны
 
 # Факультеты
 
-## Get All Kittens
+## Все факультеты
 
 ```ruby
 require 'kittn'
@@ -81,7 +83,7 @@ curl "http://example.com/api/kittens"
   -H "Authorization: meowmeowmeow"
 ```
 
-> The above command returns JSON structured like this:
+> Команда вернет JSON, структура которого будет следующей:
 
 ```json
 [
@@ -104,22 +106,22 @@ curl "http://example.com/api/kittens"
 
 This endpoint retrieves all kittens.
 
-### HTTP Request
+### Пример
 
-`GET http://example.com/kittens`
+`GET http://dimmetrius.ru/kittens`
 
-### Query Parameters
+### Параметры Запроса
 
-Parameter | Default | Description
+Параметр | Тип | Описание
 --------- | ------- | -----------
 include_cats | false | If set to true, the result will also include cats.
 available | true | If set to false, the result will include kittens that have already been adopted.
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Запрос кэшируется на сервере
 </aside>
 
-## Get a Specific Kitten
+## Получить Определенный факультет
 
 ```ruby
 require 'kittn'
