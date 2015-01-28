@@ -173,10 +173,137 @@ Host: dimmetrius.ru
 facultyOid | number | ID факультета
 
 
+#Состав группы
 
-This endpoint retrieves a specific kitten.
+> Для получения состава групы используется следующий запрос:
+
+
+```http
+GET /RUZService.svc/staffofgroup?groupOid=323 HTTP/1.1
+User-Agent: MobileClient/1.0.0
+Host: dimmetrius.ru
+
+```
+
+### Параметры Запроса
+
+Параметр | Тип | Описание
+--------- | ------- | -----------
+groupOid | number | ID группы
+
+> Команда вернет JSON, структура которого будет следующей:
+
+```json
+[
+    {
+        "fio": "Бабич Кирилл Сергеевич",
+        "shortFIO": "Бабич К.С.",
+        "studentOid": 19790
+    },
+    {
+        "fio": "Барков Никита Антонович",
+        "shortFIO": "Барков Н.А.",
+        "studentOid": 19783
+    }
+]
+```
+<aside class="success">
+Запрос кэшируется на сервере
+</aside>
+
+#Кафедры
+
+> Для получения кафедр используется следующий запрос:
+
+
+```http
+GET /RUZService.svc/chairs HTTP/1.1
+User-Agent: MobileClient/1.0.0
+Host: dimmetrius.ru
+
+```
+
+> Команда вернет JSON, структура которого будет следующей:
+
+```json
+[
+    {
+        "abbr": null,
+        "chairOid": 1,
+        "code": null,
+        "faculty": "",
+        "facultyOid": 0,
+        "name": "!Не определена"
+    },
+    {
+        "abbr": "Базкаф\"МаметсисанаИD",
+        "chairOid": 655,
+        "code": "02.26.10",
+        "faculty": "Факультет компьютерных наук",
+        "facultyOid": 5572,
+        "name": "Базовая кафедра \"Математические методы системного анализа\" ИDA6C"
+    }
+]
+```
+
+# Преподаватели
+
+## Получить всех преподавателей
+
+> Для получения списка преподавателей используется следующий запрос:
+
+
+```http
+GET /RUZService.svc/lecturers HTTP/1.1
+User-Agent: MobileClient/1.0.0
+Host: dimmetrius.ru
+
+```
+
+> Команда вернет JSON, структура которого будет следующей:
+
+```json
+[
+    { 
+        "chair": "Департамент анализа данных и искусственного интеллекта",
+        "chairOid": 663,
+        "fio": "Алексеевский Даниил Андреевич",
+        "lecturerOid": 6601,
+        "shortFIO": "Алексеевский Д.А."
+    },
+    {
+        "chair": "Департамент анализа данных и искусственного интеллекта",
+        "chairOid": 663,
+        "fio": "Большакова Елена Игоревна",
+        "lecturerOid": 6690,
+        "shortFIO": "Большакова Е.И."
+    }
+]
+```
+
+<aside class="success">
+Запрос кэшируется на сервере
+</aside>
+
+## Получить преподавателей определенной кафедры
+
+```http
+GET /RUZService.svc/lecturers?chairOid=663 HTTP/1.1
+User-Agent: MobileClient/1.0.0
+Host: dimmetrius.ru
+
+```
+
+### Параметры Запроса
+
+Параметр | Тип | Описание
+--------- | ------- | -----------
+chairOid | number | ID кафедры
+
 
 <aside class="warning">Запросы на подбор аудитории, просмотр и регистрацию заявки могут выполнить только авторизованные пользователи</aside>
+
+# TO DO
 
 # Ошибки
 
